@@ -85,7 +85,17 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+
+  {
+    title: 'Lorem Title Thingy',
+  date: 'Jan 9th, 2019',
+  firstParagraph: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente adipisci, illum nostrum nam voluptatibus expedita, omnis aliquid odio architecto tempore corrupti minima ad eius molestiae a eum velit debitis earum!',
+
+  secondParagraph: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente adipisci, illum nostrum nam voluptatibus expedita, omnis aliquid odio architecto tempore corrupti minima ad eius molestiae a eum velit debitis earum!`,
+
+  thirdParagraph: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente adipisci, illum nostrum nam voluptatibus expedita, omnis aliquid odio architecto tempore corrupti minima ad eius molestiae a eum velit debitis earum!`
+}
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -97,8 +107,44 @@ const data = [
     {three separate paragraph elements}
 
     <span class='expandButton'></span>
-  </div>
+  </div>*/
+  function articleFunction(title, date, first, second, third) {
+    const article = document.createElement('div');
+    const articleTitle = document.createElement('h2');
+    const articleDate = document.createElement('p');
+    const para1 = document.createElement('p');
+    const para2 = document.createElement('p');
+    const para3 = document.createElement('p');
+    const button = document.createElement('span');
 
+    article.appendChild(articleTitle);
+    article.appendChild(articleDate);
+    article.appendChild(para1);
+    article.appendChild(para2);
+    article.appendChild(para3);
+    article.appendChild(button);
+
+    article.classList.add('article');
+    articleDate.classList.add('date');
+    button.classList.add('expandButton');
+
+    articleTitle.textContent = title;
+    articleDate.textContent = date;
+    para1.textContent = first;
+    para2.textContent = second;
+    para3.textContent = third;
+    button.textContent = "Learn More";
+
+    button.addEventListener("click", function() {
+      article.classList.toggle('article-open');
+    })
+    
+    return article;
+  }
+  
+
+
+  /*
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
@@ -112,3 +158,8 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const section = document.querySelector(".articles");
+
+data.map(function(ele) {
+  section.appendChild(articleFunction(ele.title, ele.date,ele.firstParagraph, ele.secondParagraph,ele.thirdParagraph));
+})

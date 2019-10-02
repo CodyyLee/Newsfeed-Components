@@ -18,7 +18,44 @@ let menuItems = [
       {each menu item as a list item}
     </ul>
   </div>
+*/
 
+function menuFunction(arr) {
+  const menu = document.createElement('div');
+  const list = document.createElement('ul');
+  const listItem1 = document.createElement('li');
+  const listItem2 = document.createElement('li');
+  const listItem3 = document.createElement('li');
+  const listItem4 = document.createElement('li');
+  const listItem5 = document.createElement('li');
+  const listItem6 = document.createElement('li');
+
+  menu.appendChild(list);
+  list.appendChild(listItem1);
+  list.appendChild(listItem2);
+  list.appendChild(listItem3);
+  list.appendChild(listItem4);
+  list.appendChild(listItem5);
+  list.appendChild(listItem6);
+
+  listItem1.textContent = arr[0];
+  listItem2.textContent = arr[1];
+  listItem3.textContent = arr[2];
+  listItem4.textContent = arr[3];
+  listItem5.textContent = arr[4];
+  listItem6.textContent = arr[5];
+
+  menu.classList.add("menu");
+
+  const menuButton = document.querySelector(".menu-button");
+  menuButton.addEventListener("click", function() {
+    menu.classList.toggle("menu--open");
+  });
+
+  return menu;
+}
+
+/*
   The function takes an array as its only argument.
 
   Step 2: Inside this function, iterate over the array creating a list item <li> element for each item in the array. 
@@ -33,3 +70,7 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+
+const header = document.querySelector('.header');
+console.log(header);
+header.appendChild(menuFunction(menuItems));
