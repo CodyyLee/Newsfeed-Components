@@ -159,7 +159,7 @@ const data = [
 
 */
 const section = document.querySelector(".articles");
-
+ 
 data.map(function(ele) {
   section.appendChild(articleFunction(ele.title, ele.date,ele.firstParagraph, ele.secondParagraph,ele.thirdParagraph));
 })
